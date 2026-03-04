@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Gym Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            text-align: center;
+            padding: 20px;
+        }
+
+        h2 {
+            color: white;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 5px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #ff6f61;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #ff3b2f;
+        }
+
+        table {
+            margin: 30px auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        th {
+            background: #ff6f61;
+            color: white;
+            padding: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>🏋️ Mini Gym Workout Logger</h2>
+
+<form method="POST" action="/add">
+    <input type="text" name="exercise" placeholder="Exercise" required><br>
+    <input type="number" name="sets" placeholder="Sets" required><br>
+    <input type="number" name="reps" placeholder="Reps" required><br>
+    <input type="number" name="weight" placeholder="Weight (kg)" required><br>
+    <button type="submit">Add Workout 💪</button>
+</form>
+
+<h3 style="color:white;">Workout History</h3>
+
+<table border="0">
+<tr>
+    <th>Exercise</th>
+    <th>Sets</th>
+    <th>Reps</th>
+    <th>Weight</th>
+</tr>
+
+{% for workout in workouts %}
+<tr>
+    <td>{{ workout[1] }}</td>
+    <td>{{ workout[2] }}</td>
+    <td>{{ workout[3] }}</td>
+    <td>{{ workout[4] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
